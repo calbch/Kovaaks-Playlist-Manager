@@ -16,13 +16,17 @@ namespace KovaaksPlaylistManager
         //  TODO: save that to a config file
 
         private UserSettings _userSettings;
-        
-        
+
+
         public PlaylistManager()
         {
-            _userSettings = LoadUserSettings();
-            LoadUserSettings();
+            if (!UserSettingsExist())
+            {
+                CreateUserSettings();
+            }
             InitializeComponent();
+            _userSettings = LoadUserSettings();
+            UpdatePlaylists();
         }
 
         private void setBtn_Click(object sender, EventArgs e)
@@ -36,6 +40,7 @@ namespace KovaaksPlaylistManager
         
         private void UpdatePlaylists()
         {
+            if (_userSettings.PlaylistPath.Equals("")) return;
             foreach (var playlist in Directory.GetFiles(_userSettings.PlaylistPath))
             {
                 var playlistStrings = playlist.Split('\\');

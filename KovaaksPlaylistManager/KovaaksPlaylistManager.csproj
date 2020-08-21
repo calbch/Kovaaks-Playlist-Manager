@@ -10,12 +10,7 @@
         <Configurations>Debug;Release</Configurations>
         <Platforms>AnyCPU</Platforms>
     </PropertyGroup>
-
-    <ItemGroup>
-      <None Remove="userSettings.json" />
-      <AdditionalFiles Include="userSettings.json">
-        <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-      </AdditionalFiles>
-    </ItemGroup>
-
+    <PropertyGroup>
+        <ApplicationIcon>appIcon.ico</ApplicationIcon>
+    </PropertyGroup>
 </Project>
